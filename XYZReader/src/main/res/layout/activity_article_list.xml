@@ -1,7 +1,9 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    >
 
     <include layout="@layout/toolbar" />
 
@@ -9,18 +11,18 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:scrollbarStyle="outsideOverlay">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:paddingBottom="4dp"
-            android:paddingLeft="@dimen/list_side_margin"
-            android:paddingRight="@dimen/list_side_margin"
-            android:paddingTop="4dp"
-            android:scrollbarStyle="outsideOverlay" />
+            android:paddingBottom="@dimen/screen_edge_margin"
+            android:paddingLeft="@dimen/screen_edge_margin"
+            android:paddingRight="@dimen/screen_edge_margin"
+            android:paddingTop="@dimen/screen_edge_margin" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
