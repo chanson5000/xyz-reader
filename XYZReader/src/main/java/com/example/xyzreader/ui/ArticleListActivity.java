@@ -1,6 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.app.ActivityOptions;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -61,8 +60,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         mContext = this;
 
         mToolbar = findViewById(R.id.toolbar);
-
-        final View toolbarContainerView = findViewById(R.id.toolbar_container);
+//        setSupportActionBar(mToolbar);
 
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
@@ -149,17 +147,11 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = ActivityOptions
-                            .makeSceneTransitionAnimation(
-                                    mContext,
-                                    imageView,
-                                    imageView.getTransitionName())
-                            .toBundle();
 
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
 
-                    startActivity(intent, bundle);
+                    startActivity(intent);
                 }
             });
             return vh;
