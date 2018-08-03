@@ -17,6 +17,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 android:fitsSystemWindows="true"
                 android:src="@drawable/logo" />
 
