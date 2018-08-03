@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <!--suppress AndroidLintContentDescription -->
-        <com.example.xyzreader.ui.DynamicHeightNetworkImageView
+        <ImageView
             android:id="@+id/thumbnail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +23,7 @@
             app:layout_constraintBottom_toTopOf="@id/article_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:background="@color/lightGrey" />
 
         <TextView
