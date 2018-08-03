@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.FloatingActionButton
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:id="@+id/share_fab"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end|bottom"
+    android:stateListAnimator="@anim/fab_state_list_anim"
+    android:background="@drawable/add_fab_background"
+    android:src="@drawable/ic_share"
+    android:elevation="@dimen/fab_elevation"
+    android:layout_margin="@dimen/fab_margin"
+    />
