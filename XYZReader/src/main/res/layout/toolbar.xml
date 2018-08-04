@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:elevation="4dp"
-    app:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+    android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
