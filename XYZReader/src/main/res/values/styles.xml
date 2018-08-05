@@ -60,16 +60,15 @@
     </style>
 
     <style name="AppTheme.ActionBar">
-        <item name="android:elevation">4dp</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="AppTheme.ActionBar.ArticleList" parent="Theme.AppCompat.Light.DarkActionBar">
-
+        <item name="android:elevation">4dp</item>
     </style>
 
-    <style name="AppTheme.ActionBar.ArticleDetail">
-
+    <style name="AppTheme.ActionBar.ArticleDetail" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:elevation">4dp</item>
     </style>
 
 </resources>
