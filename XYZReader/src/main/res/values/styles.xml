@@ -59,4 +59,17 @@
         <item name="android:src">@drawable/ic_share</item>
     </style>
 
+    <style name="AppTheme.ActionBar">
+        <item name="android:elevation">4dp</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.ArticleList" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
+
+    <style name="AppTheme.ActionBar.ArticleDetail">
+
+    </style>
+
 </resources>
