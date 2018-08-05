@@ -108,13 +108,14 @@ public class ArticleListActivity extends AppCompatActivity implements
         mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> cursorLoader, Cursor cursor) {
         Adapter adapter = new Adapter(cursor);
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
@@ -125,7 +126,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mRecyclerView.setAdapter(null);
     }
 
