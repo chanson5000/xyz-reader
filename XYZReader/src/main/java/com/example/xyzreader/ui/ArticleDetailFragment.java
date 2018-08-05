@@ -14,6 +14,7 @@ import java.util.Locale;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
@@ -44,19 +45,18 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
 
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private ColorDrawable mStatusBarColorDrawable;
+    private FragmentActivity mFragmentActivity;
 
     private View mPhotoContainerView;
     private ImageView mPhotoView;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
-    private Toolbar mToolbar;
 
     private SimpleDateFormat dateFormat =
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss", Locale.getDefault());
@@ -84,7 +84,9 @@ public class ArticleDetailFragment extends Fragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
+        mFragmentActivity = getActivityCast();
+
+        if (getArguments() != null && getArguments().containsKey(ARG_ITEM_ID)) {
             mItemId = getArguments().getLong(ARG_ITEM_ID);
         }
 
@@ -116,7 +118,7 @@ public class ArticleDetailFragment extends Fragment implements
 
         mPhotoView = mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-        mToolbar = mRootView.findViewById(R.id.toolbar);
+        Toolbar mToolbar = mRootView.findViewById(R.id.toolbar);
 
         if (mToolbar != null) {
             getActivityCast().setSupportActionBar(mToolbar);
@@ -128,7 +130,7 @@ public class ArticleDetailFragment extends Fragment implements
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getActivity().finish();
+                    mFragmentActivity.finish();
                 }
             });
         }
@@ -138,7 +140,7 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
+                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(mFragmentActivity)
                         .setType("text/plain")
                         .setText("Some sample text")
                         .getIntent(), getString(R.string.action_share)));
