@@ -7,4 +7,8 @@
     <dimen name="fab_margin">24dp</dimen>
 
     <dimen name="screen_edge_margin">8dp</dimen>
+    <dimen name="article_max_width">600dp</dimen>
+
+    <dimen name="article_card_view_margin_top">0dp</dimen>
+    <dimen name="article_card_view_width">500dp</dimen>
 </resources>

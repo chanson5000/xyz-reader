@@ -17,7 +17,9 @@
 
 <resources>
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.CardView" parent="CardView.Light">
@@ -50,6 +52,29 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="AppTheme.Article" parent="AppTheme.CardView">
+        <item name="android:elevation">@dimen/article_elevation</item>
+    </style>
+
+    <style name="AppTheme.Article.MetaBar">
+
+    </style>
+
+    <style name="AppTheme.Article.MetaBar.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:lineSpacingMultiplier">0.9</item>
+    </style>
+
+    <style name="AppTheme.Article.MetaBar.ByLine">
+        <item name="android:textSize">@dimen/detail_byline_text_size</item>
+    </style>
+
+    <style name="AppTheme.Article.Body">
+        <item name="android:textSize">@dimen/detail_body_text_size</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
     <style name="AppTheme.Fab">
         <item name="android:elevation">8dp</item>
         <item name="android:stateListAnimator">@anim/fab_state_list_anim</item>
@@ -63,12 +88,11 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
-    <style name="AppTheme.ActionBar.ArticleList" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:elevation">4dp</item>
+    <style name="AppTheme.ActionBar.ArticleList" parent="AppTheme">
     </style>
 
-    <style name="AppTheme.ActionBar.ArticleDetail" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:elevation">4dp</item>
+    <style name="AppTheme.ActionBar.ArticleDetail">
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
 </resources>
