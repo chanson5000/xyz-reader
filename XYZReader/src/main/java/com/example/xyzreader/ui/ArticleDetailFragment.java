@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -55,6 +56,7 @@ public class ArticleDetailFragment extends Fragment implements
     private final SimpleDateFormat dateFormat =
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss", Locale.getDefault());
     // Use default locale format
+    @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
     private final GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
