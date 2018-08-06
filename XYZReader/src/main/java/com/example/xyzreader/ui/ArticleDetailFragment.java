@@ -42,7 +42,7 @@ public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
 
-    public static final String ARG_ITEM_ID = "item_id";
+    private static final String ARG_ITEM_ID = "item_id";
 
     private Cursor mCursor;
     private long mItemId;
@@ -52,12 +52,12 @@ public class ArticleDetailFragment extends Fragment implements
 
     private ImageView mPhotoView;
 
-    private SimpleDateFormat dateFormat =
+    private final SimpleDateFormat dateFormat =
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss", Locale.getDefault());
     // Use default locale format
-    private SimpleDateFormat outputFormat = new SimpleDateFormat();
+    private final SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
+    private final GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -86,7 +86,7 @@ public class ArticleDetailFragment extends Fragment implements
         setHasOptionsMenu(true);
     }
 
-    public ArticleDetailActivity getActivityCast() {
+    private ArticleDetailActivity getActivityCast() {
         return (ArticleDetailActivity) getActivity();
     }
 
@@ -190,19 +190,22 @@ public class ArticleDetailFragment extends Fragment implements
                                 new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
                                     @Override
                                     public void onGenerated(@NonNull Palette palette) {
-                                        int newMetaBarColor = palette.getDarkMutedColor(getResources()
-                                                .getColor(R.color.colorPrimaryDark));
-                                        int newFabButtonColor = palette.getLightVibrantColor(getResources()
-                                                .getColor(R.color.colorPrimary));
-                                        int newBackgroundColor = palette.getLightMutedColor(getResources()
-                                                .getColor(R.color.colorPrimaryLight));
+                                        if (getActivity() != null) {
+                                            int newMetaBarColor = palette.getDarkMutedColor(getResources()
+                                                    .getColor(R.color.colorPrimaryDark));
+                                            int newFabButtonColor = palette.getLightVibrantColor(getResources()
+                                                    .getColor(R.color.colorPrimary));
+                                            int newBackgroundColor = palette.getLightMutedColor(getResources()
+                                                    .getColor(R.color.colorPrimaryLight));
 
-                                        mRootView.findViewById(R.id.article_fragment_container)
-                                                .setBackgroundColor(newBackgroundColor);
-                                        mRootView.findViewById(R.id.share_fab)
-                                                .setBackgroundColor(newFabButtonColor);
-                                        mRootView.findViewById(R.id.meta_bar)
-                                                .setBackgroundColor(newMetaBarColor);
+
+                                            mRootView.findViewById(R.id.article_fragment_container)
+                                                    .setBackgroundColor(newBackgroundColor);
+                                            mRootView.findViewById(R.id.share_fab)
+                                                    .setBackgroundColor(newFabButtonColor);
+                                            mRootView.findViewById(R.id.meta_bar)
+                                                    .setBackgroundColor(newMetaBarColor);
+                                        }
                                     }
                                 });
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());

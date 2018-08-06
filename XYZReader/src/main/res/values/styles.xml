@@ -77,7 +77,6 @@
 
     <style name="AppTheme.Fab">
         <item name="android:elevation">8dp</item>
-        <item name="android:stateListAnimator">@anim/fab_state_list_anim</item>
     </style>
 
     <style name="AppTheme.Fab.Share">
