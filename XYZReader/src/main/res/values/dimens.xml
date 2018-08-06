@@ -15,7 +15,7 @@
 
     <dimen name="screen_edge_margin">4dp</dimen>
 
-    <dimen name="action_bar_elevation">4dp</dimen>
+    <dimen name="action_bar_elevation">0dp</dimen>
 
     <dimen name="article_elevation">0dp</dimen>
     <dimen name="article_app_bar_height">200dp</dimen>
