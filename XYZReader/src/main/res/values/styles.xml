@@ -16,7 +16,7 @@
 -->
 
 <resources>
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -60,17 +60,17 @@
 
     </style>
 
-    <style name="AppTheme.Article.MetaBar.Title">
+    <style name="AppTheme.Article.MetaBar.Title" parent="TextAppearance.AppCompat.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/detail_title_text_size</item>
         <item name="android:lineSpacingMultiplier">0.9</item>
     </style>
 
-    <style name="AppTheme.Article.MetaBar.ByLine">
+    <style name="AppTheme.Article.MetaBar.ByLine" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">@dimen/detail_byline_text_size</item>
     </style>
 
-    <style name="AppTheme.Article.Body">
+    <style name="AppTheme.Article.Body" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textSize">@dimen/detail_body_text_size</item>
         <item name="android:padding">8dp</item>
     </style>
@@ -91,7 +91,7 @@
     <style name="AppTheme.ActionBar.ArticleList" parent="AppTheme">
     </style>
 
-    <style name="AppTheme.ActionBar.ArticleDetail">
+    <style name="AppTheme.ActionBar.ArticleDetail" parent="AppTheme">
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
