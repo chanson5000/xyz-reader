@@ -2,6 +2,7 @@ package com.example.xyzreader.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 
@@ -204,7 +205,7 @@ public class ArticleDetailFragment extends Fragment implements
                                             mRootView.findViewById(R.id.article_fragment_container)
                                                     .setBackgroundColor(newBackgroundColor);
                                             mRootView.findViewById(R.id.share_fab)
-                                                    .setBackgroundColor(newFabButtonColor);
+                                                    .setBackgroundTintList(ColorStateList.valueOf(newFabButtonColor));
                                             mRootView.findViewById(R.id.meta_bar)
                                                     .setBackgroundColor(newMetaBarColor);
                                         }
