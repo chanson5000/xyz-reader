@@ -3,7 +3,6 @@ package com.example.xyzreader.ui;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +21,6 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,11 +47,9 @@ public class ArticleDetailFragment extends Fragment implements
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
-    private int mMutedColor = 0xFF333333;
-    private ColorDrawable mStatusBarColorDrawable;
     private FragmentActivity mFragmentActivity;
 
-    private View mPhotoContainerView;
+
     private ImageView mPhotoView;
 
     private SimpleDateFormat dateFormat =
@@ -77,7 +73,6 @@ public class ArticleDetailFragment extends Fragment implements
         fragment.setArguments(arguments);
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,7 +107,6 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
         mPhotoView = mRootView.findViewById(R.id.photo);
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
         Toolbar mToolbar = mRootView.findViewById(R.id.toolbar);
 
         if (mToolbar != null) {
@@ -129,8 +123,6 @@ public class ArticleDetailFragment extends Fragment implements
                 }
             });
         }
-
-        mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,12 +187,25 @@ public class ArticleDetailFragment extends Fragment implements
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
 
-                                Palette p = new Palette.Builder(bitmap).maximumColorCount(12).generate();
-                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                mRootView.findViewById(R.id.meta_bar)
-                                        .setBackgroundColor(mMutedColor);
+                                new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
+                                    @Override
+                                    public void onGenerated(@NonNull Palette palette) {
+                                        int newMetaBarColor = palette.getDarkMutedColor(getResources()
+                                                .getColor(R.color.colorPrimaryDark));
+                                        int newFabButtonColor = palette.getLightVibrantColor(getResources()
+                                                .getColor(R.color.colorPrimary));
+                                        int newBackgroundColor = palette.getLightMutedColor(getResources()
+                                                .getColor(R.color.colorPrimaryLight));
 
+                                        mRootView.findViewById(R.id.article_fragment_container)
+                                                .setBackgroundColor(newBackgroundColor);
+                                        mRootView.findViewById(R.id.share_fab)
+                                                .setBackgroundColor(newFabButtonColor);
+                                        mRootView.findViewById(R.id.meta_bar)
+                                                .setBackgroundColor(newMetaBarColor);
+                                    }
+                                });
+                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
                             }
                         }
 
